@@ -33,25 +33,25 @@ public class GeoServiceTests {
     public static void afterAll() {
         System.out.println("Tests finished");
     }
-//
-//    @ParameterizedTest
-//    @MethodSource("getArguments")
-//    public void geoTest(String ip, Country country) {
-//        Assertions.assertEquals(geoService.byIp(ip),country );
-//    }
-//
-//    public static Stream<Arguments> getArguments() {
-//        return Stream.of(Arguments.of("172.0.122.112", Country.RUSSIA), Arguments.of("96.444.1211.1557", Country.USA));
-//    }
 
     @ParameterizedTest
-    @MethodSource("getArguments2")
-    public void geoTest2(double latitude, double longitude)  throws RuntimeException{
-       var expected = RuntimeException.class;
-        Assertions.assertEquals(geoService.byCoordinates(latitude, longitude), expected);
+    @MethodSource("getArguments")
+    public void geoTest(String ip, Country country) {
+        Assertions.assertEquals(geoService.byIp(ip),country );
     }
 
-    public static Stream<Arguments> getArguments2() {
-        return Stream.of(Arguments.of(12.0, 5.0), Arguments.of(13.0, 6.0));
+    public static Stream<Arguments> getArguments() {
+        return Stream.of(Arguments.of("172.0.122.112", Country.RUSSIA), Arguments.of("96.444.1211.1557", Country.USA));
     }
+
+//    @ParameterizedTest
+//    @MethodSource("getArguments2")
+//    public void geoTest2(double latitude, double longitude)  throws RuntimeException{
+//       var expected = RuntimeException.class;
+//        Assertions.assertEquals(geoService.byCoordinates(latitude, longitude), expected);
+//    }
+//
+//    public static Stream<Arguments> getArguments2() {
+//        return Stream.of(Arguments.of(12.0, 5.0), Arguments.of(13.0, 6.0));
+//    }
 }
